@@ -3373,3 +3373,12 @@ Use historical data to refine budget allocation, marketing spend, and revenue fo
 Adapt content for international audiences.
 
 Explore co-productions to expand distribution and reduce financing risks.
+
+
+** Below are the links to our presentation and ipynb files **
+
+https://www.canva.com/design/DAGyys_SwZ4/ABQ1ga1xfsDXLmmHIRkcRw/edit?utm_content=DAGyys_SwZ4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+https://github.com/Mitchelle-Mkan/dsc-phase-2-project-v3/blob/main/student.ipynb
+
+https://github.com/Mitchelle-Mkan/dsc-phase-2-project-v3/blob/main/Group1%20Data%20analysis%20student%20ipynb.pdf
