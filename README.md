@@ -1,4 +1,4 @@
-## Final Project Submission
+# Final Project Submission
 
 Please fill out:
 * Student name: Godfrey Osundwa, Mitchelle Mkan, Lameck Odallo, Elizabeth Kiilu
@@ -67,7 +67,7 @@ This prepared dataset ensures reliability for both descriptive and exploratory a
 ## Data Analysis
 
 
-**Lets Import Necessary Tools**
+### Lets Import Necessary Tools
 
 
 ```python
@@ -81,9 +81,9 @@ import os
 
 ```
 
-**Loading The Data to Jupyter Notebook**
+## Loading The Data to Jupyter Notebook
 
-**The Numbers**
+### The Numbers
 
 
 Data Exploration (What is in the zippedData)
@@ -127,7 +127,7 @@ print(tn.head())
     4      $317,000,000   $620,181,382  $1,316,721,747  
     
 
-**Box Office Mojo**
+### Box Office Mojo
 
 bom = pd.read_csv(f"{data_path}/bom.movie_gross.csv.gz")
 print(bom.shape)
@@ -240,7 +240,7 @@ print(imdb_full.head())
     4  2017             80.0  Comedy,Drama,Fantasy            6.5       119  
     
 
-**THE MOVIE DB TMDB**
+### THE MOVIE DB TMDB
 
 
 ```python
@@ -276,7 +276,7 @@ print(tmdb.columns)
           dtype='object')
     
 
-**ROTTEN TOMATOES**
+### ROTTEN TOMATOES
 
 
 ```python
@@ -320,7 +320,7 @@ print(rt_info.columns)
           dtype='object')
     
 
-**IMDB**
+### IMDB
 
 
 ```python
@@ -393,9 +393,9 @@ print(imdb_full.head())
     4  2017             80.0  Comedy,Drama,Fantasy            6.5       119  
     
 
-**Data Selection**
+## Data Selection
 
-**The Numbers**
+### The Numbers
 
 The Number contains box office and budget info, but BOM has better international coverage.
 
@@ -405,7 +405,7 @@ Using both TN and BOM would cause redundancy (they overlap heavily).
 
 **Decision:** We drop TN in favor of BOM, which is more widely used in financial analysis.
 
-**Rotten Tomatoes**
+### Rotten Tomatoes
 
 RT scores are already correlated with IMDb ratings (both are critic/audience evaluations).
 
@@ -416,7 +416,7 @@ We don’t want redundant metrics → IMDb ratings are more complete and easier 
 **Decision:**  We drop Rotten Tomatoes because it adds little new information beyond IMDb.
 
 
-**We keep IMDb, TMDB, BOM** Because
+### We keep IMDb, TMDB, BOM Because
 
 *IMDb - Huge coverage & trusted metadata. It gives us ratings or critical response, titles, years, runtimes → essential backbone.*
 
@@ -424,9 +424,9 @@ We don’t want redundant metrics → IMDb ratings are more complete and easier 
 
 *Box Office Mojo (BOM) -  Strong financial data (domestic plus international grosses, sometimes budget). This is directly tied to our core business question.*
 
-**Exploratory Data Analysis.**
+## Exploratory Data Analysis.
 
-**Cleaning of Box Office Mojo**
+### Cleaning of Box Office Mojo
 
 
 
@@ -479,9 +479,9 @@ print(bom.isna().sum())
 
 This dataset contains **3,387** movies with information on title, studio, domestic gross, foreign gross, and release year. It is mostly complete, with only a few missing values in the studio and domestic_gross columns, but a significant portion **40%** of the foreign_gross data is missing. Additionally, the foreign_gross column is stored as text and will need to be cleaned and converted to numeric for analysis. Overall, the dataset is rich enough for exploring box office performance across studios and years, though attention will be required to handle missing and inconsistent values.
 
-**Cleaning of Box Office Mojo**
+## Cleaning of Box Office Mojo
 
-**Normalizing whitespace & empty-strings**
+### Normalizing whitespace & empty-strings
 
 
 ```python
@@ -504,7 +504,7 @@ print("After normalizing blank strings:\n", bom.isnull().sum())
 
 This means that blank -NA placeholders are successfully normalized into real NaN values
 
-**Cleaning numeric money columns (foreign_gross, domestic_gross)**
+### Cleaning numeric money columns (foreign_gross, domestic_gross)
 
 
 ```python
@@ -627,7 +627,7 @@ plt.show()
     
 
 
-**Domestic Gross**
+### Domestic Gross
 
 
 The vast majority of movies gross less than 100 million dolars domestically.
@@ -636,7 +636,7 @@ There's a steep drop-off as gross revenue increases.
 
 A few movies fall in the $1B to 10B dolars range, which is unusual and likely includes outliers or data errors.
 
-**Foreign Gross**
+### Foreign Gross
 
 
 Similar to the domestic plot, most movies gross less than $100 million.
@@ -644,7 +644,7 @@ Similar to the domestic plot, most movies gross less than $100 million.
 There are also a few movies with gross revenues above 1B dolars, and some nearing $10B, which is extremely rare.
 
 
-**Extreme Values**
+### Extreme Values
 
 
 The highest-grossing movie of all time, Avatar (when adjusted for inflation or not), grossed around $2.9 billion globally.
@@ -658,7 +658,7 @@ An aggregated value (e.g., across many re-releases or formats).
 Or potentially an outlier due to a mislabeling of revenue sources.
 
 
-**Investigating Outliers**
+### Investigating Outliers
 
 
 ```python
@@ -827,9 +827,9 @@ Standardizing titles for later merging with IMDB/TMDB:
 bom['title'] = bom['title'].str.strip().str.lower()
 ```
 
-**Performing Cleaning on IMDB**
+## Performing Cleaning on IMDB
 
-**Checking for missing values**
+### Checking for missing values
 
 
 ```python
@@ -1057,7 +1057,7 @@ print(imdb_full.isnull().sum())
 
 Awsome
 
-**Cleaning of The Movie Db**
+## Cleaning of The Movie Db
 
 
 ```python
@@ -1125,7 +1125,7 @@ print(tmdb.isna().sum())
 
 The dataset contains 26,517 movie entries with 10 columns. All fields are complete with no missing values, which means the dataset is clean and ready for analysis. The available variables provide rich information, including movie identifiers (id), titles (title, original_title), genres (genre_ids), language, release date, popularity score, and user engagement metrics (vote_average, vote_count). Since there are no null values, no major cleaning is required, and analysis can focus on exploring trends in popularity, ratings, languages, or genre distributions.
 
-**Data Merging**
+## Data Merging
 
 Before merging, we need titles and years in the same format across IMDB and BOM
 
@@ -1549,9 +1549,9 @@ imdb_bom_tmdb.head()
 
 
 
-**EDA ON OUR MERGERD DATASET**
+## EDA ON OUR MERGERD DATASET
 
-**Step 1** Create worldwide_gross
+### Step 1: Create worldwide_gross
 
 
 ```python
@@ -1564,7 +1564,7 @@ imdb_bom_tmdb["worldwide_gross"] = (
 )
 ```
 
-**Step 2** Check Missing Values in Key Columns
+### Step 2: Check Missing Values in Key Columns
 
 
 ```python
@@ -1593,7 +1593,7 @@ We will keep all movies, but keep in mind that worldwide_gross for missing forei
 
 Later, when we compare international vs domestic performance, we will filter out movies with missing foreign_gross.
 
-**Step 3**  Perform Basic Stats
+### Step 3:  Perform Basic Stats
 
 
 ```python
@@ -1615,9 +1615,9 @@ Mean worldwide gross is equivalent to $123M - pulled up by massive blockbusters.
 
 Median worldwide gross = $37.6M - shows the “typical” film earns far less than the mean.
 
-**GENRE CLEANING**
+## GENRE CLEANING
 
-**Step 1** Clean & Standardize Genres
+### Step 1: Clean & Standardize Genres
 
 Notice IMDb gives us a comma-separated string of genres (e.g., "Action,Crime,Drama"). 
 
@@ -1654,7 +1654,7 @@ By using the primary genre, we’re effectively reduce each movie to one main ca
 
 Also a film like The Dark Knight might be listed as "Action, Crime, Drama". Our method assigns it Action only. This avoids double counting, but it also means we lose the nuance of multi-genre films.
 
-**Step 2** Studio Analysis
+### Step 2: Studio Analysis
 
 We rank studios by total **worldwide gross**
 
@@ -1692,7 +1692,7 @@ Universal 29B dolars and Sony 24B dolars follow.
 
 Paramount, Lionsgate, DreamWorks (P/DW), and Sony/LG subsidiaries round out the top 10.
 
-**Step 3** Ratings vs Box Office
+### Step 3: Ratings vs Box Office
 
 Compare IMDb and TMDB ratings with worldwide gross:
 
@@ -1718,7 +1718,7 @@ Weak positive — higher-rated movies tend to earn more globally, but the relati
 Huge box office films can also have average ratings (e.g., Transformers).
 
 
-**Step 4** Runtime vs Box Office
+### Step 4: Runtime vs Box Office
 
 Check if longer movies tend to earn more
 
@@ -1745,7 +1745,7 @@ Runtime might be acting as a proxy for genre and budget (e.g., action/adventure 
 
 Alone, it doesn’t explain much — but in combination with genre and studio, it could be more
 
-**VISUALIZATION**
+## VISUALIZATION
 
 
 ```python
@@ -1829,9 +1829,9 @@ plt.show()
     
 
 
-**Insights from Genre Performance**
+## Insights from Genre Performance
 
-Top Earning Genres (by average worldwide gross)
+### Top Earning Genres: (by average worldwide gross)
 
 **Family** appears artificially inflated (mean  $421M), but that’s only 3 movies - small sample size.
 
@@ -1839,19 +1839,19 @@ Top Earning Genres (by average worldwide gross)
 
 Fantasy also performs well per movie ($228M mean), but again with a small sample (10 movies).
 
-**Moderate Earners:**
+### Moderate Earners:
 
 **Animation** (mean = $136M) — fewer titles (22) but still consistently high.
 
 **Horror** (mean = $103M) - surprisingly profitable given its reputation as “low-budget, high-return”.
 
-Weaker Grossing Genres:
+### Weaker Grossing Genres:
 
 **Comedy, Biography, Crime, Drama** - much lower averages (between $49M – $60M), even though they have high counts.
 
 **These genres may have more critical acclaim than commercial dominance.**
 
-**Niche / Sparse Genres:**
+### Niche / Sparse Genres:**
 
 Documentary (mean = $13M), Music, Unknown - not commercially competitive.
 
@@ -1913,9 +1913,9 @@ plt.show()
     
 
 
-**Insights from Studio Performance**
+## Insights from Studio Performance
 
-Top Blockbuster Machines
+### Top Blockbuster Machines
 
 BV (Buena Vista / Disney):
 
@@ -1939,7 +1939,7 @@ Shows how much animated hits can skew averages. WB (NL) New Line Cinem
 
 Consistently strong at $235M mean → boosted by franchises like Lord of the Rings.
 
-**Mid-Tier Players**
+### Mid-Tier Players
 
 LGF (Lionsgate), Focus, Weinstein, Fox Searchlight, TriStar, SGem:
 
@@ -1950,7 +1950,7 @@ Averages are much lower (≈$40–80M).
 These are more niche or prestige studios → some hits (Hunger Games, Twilight, La La Land) but overall weaker commercial footprint.
 
 
-**In Summary**
+## In Summary
 
 Disney (BV) dominates - huge total and reliable per-film success.
 
@@ -2299,7 +2299,7 @@ studio_genre_pivot.head(10)
 
 
 
-**Key Observations from the Pivot**
+### Key Observations from the Pivot
 
 Disney (BV) - Dominates Adventure, Action, Family, and Fantasy → $52.4B total!
 
@@ -2315,7 +2315,7 @@ Lionsgate (LGF) - More focus on Drama, Horror, and Action franchises.
 
 DreamWorks/Paramount (P/DW) - Only a handful of blockbusters, but very high mean per title.
 
-**Next Step** Heatmap Visualization
+### **Next Step** Heatmap Visualization
 
 A heatmap will make dominance clear at a glance.
 
@@ -3209,7 +3209,7 @@ plt.show()
 
 From 2010–2018, action and adventure dominated worldwide grosses, driven by franchise blockbusters (Marvel, DC, Star Wars, Jurassic World). Comedy, drama, and biographies remained steady but modest, serving more for awards than box office. Family/animation showed spikes when Disney/DreamWorks released hits. Overall grosses dipped from 26B dollars in 2010 to 21.5B dolars in 2012, rebounded in 2013, and grew steadily to a peak of $37.5B in 2017 before sharply dropping in 2018. This trend highlights the industry’s dependence on tentpole franchises, with box office performance rising and falling based on a handful of global mega-hits.
 
-**Profitability vs. Ratings**
+### Profitability vs. Ratings
 
 
 ```python
@@ -3258,7 +3258,7 @@ plt.show()
 
 Both IMDb and TMDB show a weak correlation between ratings and worldwide gross — blockbuster hits tend to cluster in the 6–7.5 rating range, not at the top of the scale. High-grossing films succeed more through franchise power, spectacle, and marketing than critical acclaim, while higher-rated films (7.5–9+) are often smaller dramas or indies with modest box office but strong prestige value. This suggests a balanced studio strategy: rely on mid-rated action/adventure blockbusters for revenue, while producing highly rated films for awards, branding, and long-term streaming value.
 
-**Outliers/blockbusters**
+### Outliers/blockbusters
 
 
 ```python
@@ -3302,9 +3302,9 @@ plt.show()
     
 
 
-Observations from Top 10 Movies by Worldwide Gross
+## Observations from Top 10 Movies by Worldwide Gross
 
-**Studio dominance**
+### Studio dominance
 
 Disney (BV = Buena Vista/Disney) overwhelmingly dominates: 7 out of 10 films.
 
@@ -3312,7 +3312,7 @@ Warner Bros. only appears once (Harry Potter).
 
 Universal sneaks in with Frozen.
 
-**Genre concentration**
+### Genre concentration
 
 Action/Adventure franchises → Marvel, Star Wars, Jurassic World (5/10).
 
@@ -3320,13 +3320,13 @@ Family/Animation -Frozen, Incredibles 2, Beauty and the Beast (3/10).
 
 The top genres align perfectly with what we saw in the trend analysis.
 
-**Franchise power**
+### Franchise power
 
 Every single movie here is part of a franchise/IP adaptation (Marvel, Star Wars, Potter, Frozen, etc.).
 
 Zero “original” films — proving that blockbuster revenue is heavily tied to brand recognition.
 
-**Strategic Implications**
+### Strategic Implications
 
 Disney’s model works: Leverage strong IP (Marvel, Star Wars, Pixar, Disney Animation).
 
@@ -3336,39 +3336,39 @@ Buy into IP-heavy strategies, or
 
 Differentiate with prestige/streaming niches.
 
-**CONCLUSION**
+## CONCLUSION
 
 Our analysis of movie performance using IMDb, Box Office Mojo, and TMDB data reveals clear drivers of commercial success in the film industry. High-grossing films consistently align with strategic studio decisions around genre selection, star power, production investment, and timing of release. Action, adventure, and fantasy dominate global box office revenues, while family-oriented and animated films show strong and reliable returns. Studios that balance big-budget blockbusters with mid-tier, niche productions tend to achieve both profitability and market resilience.
 
 These insights demonstrate that data-driven decision-making can significantly improve forecasting accuracy and guide resource allocation. By aligning creative choices with market demand, studios can minimize financial risks while capturing larger audience segments across regions.
 
-**Recommendations**
+## Recommendations
 
-**Focus on High-Performing Genres**
+### Focus on High-Performing Genres
 
 Prioritize investments in action, fantasy, and adventure for blockbuster potential.
 
 Support family/animation projects for steady, global cross-market appeal.
 
-**Strategic Release Scheduling**
+### Strategic Release Scheduling
 
 Target peak seasons (summer, holidays) for high-budget films.
 
 Use off-peak windows to release niche or experimental content, reducing competition risk.
 
-**Leverage Talent and Studios**
+### Leverage Talent and Studios
 
 Partner with top directors and actors who consistently boost returns.
 
 Strengthen studio branding by developing genre-specific expertise.
 
-D**ata-Driven Portfolio Management**
+### Data-Driven Portfolio Management
 
 Maintain a balanced pipeline: tentpole films for visibility + mid-tier projects for stability.
 
 Use historical data to refine budget allocation, marketing spend, and revenue forecasting.
 
-**Global Market Positioning**
+### Global Market Positioning
 
 Adapt content for international audiences.
 
