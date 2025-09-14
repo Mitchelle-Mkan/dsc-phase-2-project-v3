@@ -3375,7 +3375,7 @@ Adapt content for international audiences.
 Explore co-productions to expand distribution and reduce financing risks.
 
 
-** Below are the links to our presentation and ipynb files **
+**Below are the links to our presentation and ipynb files**
 
 https://www.canva.com/design/DAGyys_SwZ4/ABQ1ga1xfsDXLmmHIRkcRw/edit?utm_content=DAGyys_SwZ4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
